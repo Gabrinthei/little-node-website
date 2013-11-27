@@ -1,0 +1,25 @@
+extends layout
+
+
+block content
+    header(style="border-bottom: 1px dotted #999;")
+        h1.heading_supersize(style="font-size:5em;margin:-15px 0;") Recent Thoughts
+        h2.welcome_text Eloquence is a painting of the thoughts <small>- Blaise Pascal</small>
+        center
+            h5(style="margin-bottom:0")
+                a(href='https://www.facebook.com/james.sonntag.75', title='facebook', style="margin-right:15px;").light <i class="icon-facebook-sign"></i> Facebook
+                
+                a(href='http://www.linkedin.com/in/jsonntag/', title='linkedin', style="margin-right:15px").light <i class="icon-linkedin-sign"></i> Linkedin
+                
+                a(href='https://github.com/Gabrinthei', title='github').light <i class="icon-github-alt"></i> Github
+
+    .section_main
+        .row
+            section.large-10.large-offset-1.columns
+                each blog, i in bloglist
+                    .blog_post(style="padding:20px;")
+                        - var title = { title: "/thoughts/" + (blog.title).replace(/ /g, '-').toLowerCase()};
+                        - var time = new Date(blog.publishDate)
+                        h3 <a href="#{title.title}"><strong>#{blog.title}</strong></a> <small class="date">#{time.toDateString()}</small>
+                        - var body = blog.body
+                        p!= body

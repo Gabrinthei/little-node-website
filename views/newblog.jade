@@ -1,0 +1,54 @@
+extends layout
+
+
+block content
+    header
+        h1= title
+    .editable
+        p Hellothere this should be editable!
+    form#formAddBlog(name="addblog", method="post", action="/addblog")
+        input#Username(type="text", placeholder="Username", name="username")
+        input#Password(type="password", placeholder="Password", name="password")
+        input#inputBlogAuthor(type="text", placeholder="Author", name="author")
+        input#inputBlogTitle(type="text", placeholder="Title", name="title")
+        input#inputBlogBody(type="text", placeholder="Body", name="body")
+        button#btnSubmit(type="submit") Submit
+
+block js
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+    script(src='/js/hallo.js')
+
+    script
+        jQuery('.editable').hallo({
+          plugins: {
+            'halloindicator': {},
+            'halloformat': {},
+            'halloheadings': {},
+            'hallojustify': {},
+            'hallolists': {},
+            'hallolink': {},
+            'halloreundo': {},
+            'halloimage': {
+                search: function(query, limit, offset, successCallback) {
+                    response = {offset: offset, total: limit + 1, assets: searchresult.slice(offset, offset+limit)};
+                    successCallback(response);
+                },
+                suggestions: null,
+                uploadUrl: function() {
+                  return '/some/example/url'
+                }
+            }
+          },
+          editable: true,
+          toolbar: 'halloToolbarFixed'
+        });
+
+        $('.editable').keyup(function() {
+            $('input[name=body]').val($('.editable').html());
+        });
+
+        $('#btnSubmit').click(function() {
+            //$('input[name=body]').val($('.editable').html());
+            //return false;
+        });

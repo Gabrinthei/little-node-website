@@ -1,0 +1,58 @@
+doctype 5
+html
+  head
+    title= title
+    meta(charset="utf-8")
+    link(rel='stylesheet', href='/css/foundation.min.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/normalize.css')
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    style
+        @import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700);
+    script(src='/js/vendor/custom.modernizr.js')
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    block head
+  
+  body
+    nav.top-bar
+        div.row
+            .large-12.columns
+                ul.title-area
+                    li.divider
+                    li.name
+                        h1
+                            a(href='/') Home
+                    li.toggle-topbar.menu-icon
+                        a(href="#")
+                .top-bar-section.right
+                    ul.left
+                        li
+                            a(href="/thoughts") Thoughts
+                        li
+                            a(href="/resume") Resume
+
+    block content
+
+    footer(style="border-top: 1px dotted #999;")
+        .row
+            .large-12.columns.footer
+                small
+                    h6 Contact Info
+                    p If you would like to contact me, please send an email to: <a href="mailto:James.Sonntag@Jamess.me">James.Sonntag@Jamess.me</a>
+
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js')
+    script(src='/js/foundation.min.js')
+    script(type='text/javascript')
+        $(document).foundation();
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44654474-1', 'jamess.me');
+        ga('send', 'pageview');
+
+    block js
