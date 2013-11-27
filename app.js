@@ -46,7 +46,7 @@ app.get('/helloworld', routes.helloworld);
 app.get('/thoughts', routes.blog(db));
 app.get('/newblog', routes.newblog);
 app.get('/resume', routes.cv);
-app.post('/thoughts/:name', routes.getblog(db));
+app.get('/thoughts/:name', routes.getblog(db));
 app.get('/keywords', routes.keywords);
 
 //Posts
