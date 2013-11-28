@@ -5,11 +5,5 @@ block content
     header
         h1= title
     .editable
-        p Hellothere this should be editable!
-    form#formAddBlog(name="addblog", method="post", action="/addblog")
-        input#Username(type="text", placeholder="Username", name="username")
-        input#Password(type="password", placeholder="Password", name="password")
-        input#inputBlogAuthor(type="text", placeholder="Author", name="author")
-        input#inputBlogTitle(type="text", placeholder="Title", name="title")
-        input#inputBlogBody(type="text", placeholder="Body", name="body")
-        button#btnSubmit(type="submit") Submit
+        each key in keywords
+            p #{key}
