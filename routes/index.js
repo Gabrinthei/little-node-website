@@ -103,7 +103,7 @@ exports.addblog = function(db) {
 //        make sure the keywords stay relevant; handle errors when google stops me.
 exports.keywords = function(){
     return function (req, res){
-        something = {};
+        fullList = {};
         count = 1;
         kill = false;
         getKeywordSuggestion({'keyword': 1});
@@ -154,11 +154,11 @@ exports.keywords = function(){
             });
 
             if (count < 10){
-                something = _.extend(something, phrases);
+                fullList = _.extend(fullList, phrases);
                 getKeywordSuggestion(keywords);
             }
             else if (!kill){
-                finalRender(something);
+                finalRender(fullList);
                 kill = true;
             }
         }
